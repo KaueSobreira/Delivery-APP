@@ -1,7 +1,6 @@
 <?php
     include('php/conexao/conection.php');
     
-    // Buscar dados das configurações da empresa
     $sqlConfig = "SELECT * FROM configuracoes_empresa LIMIT 1";
     $resultConfig = $conn->query($sqlConfig);
     
@@ -9,17 +8,14 @@
         $config = $resultConfig->fetch_assoc();
     }
     
-    // Contar produtos
     $sqlCountProdutos = "SELECT COUNT(*) as total FROM produtos";
     $resultProdutos = $conn->query($sqlCountProdutos);
     $totalProdutos = ($resultProdutos) ? $resultProdutos->fetch_assoc()['total'] : 0;
     
-    // Contar categorias
     $sqlCountCategorias = "SELECT COUNT(*) as total FROM categoria";
     $resultCategorias = $conn->query($sqlCountCategorias);
     $totalCategorias = ($resultCategorias) ? $resultCategorias->fetch_assoc()['total'] : 0;
     
-    // Contar produtos em promoção
     $sqlCountPromocoes = "SELECT COUNT(*) as total FROM produtos WHERE em_promocao = 1";
     $resultPromocoes = $conn->query($sqlCountPromocoes);
     $totalPromocoes = ($resultPromocoes) ? $resultPromocoes->fetch_assoc()['total'] : 0;

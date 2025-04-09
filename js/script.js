@@ -97,7 +97,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Menu mobile toggle
     const btnMobile = document.querySelector('.btnMobile');
     const navItems = document.querySelector('.items');
     
@@ -107,7 +106,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Fechar menu ao clicar em um link
     const navLinksMobile = document.querySelectorAll('.items a');
     navLinksMobile.forEach(link => {
         link.addEventListener('click', function() {
@@ -115,12 +113,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Adicionar ícones através do Iconify (se disponível)
     if (window.Iconify) {
         Iconify.scan();
     }
     
-    // Rolagem suave para as âncoras
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();

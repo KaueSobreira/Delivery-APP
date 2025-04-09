@@ -27,7 +27,7 @@ CREATE TABLE configuracoes_empresa (
 
 CREATE TABLE horarios_funcionamento (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    dia_semana TINYINT NOT NULL COMMENT '0-Domingo, 1-Segunda, 2-Terça, 3-Quarta, 4-Quinta, 5-Sexta, 6-Sábado',
+    dia_semana TINYINT NOT NULL,
     horario_inicio TIME,
     horario_fim TIME,
     aberto BOOLEAN DEFAULT TRUE,

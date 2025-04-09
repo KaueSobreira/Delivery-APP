@@ -18,8 +18,6 @@ if (isset($_GET['id'])) {
             header('Location: categoria.php?error=2');
             exit();
         }
-        
-        // Se não houver produtos, deleta a categoria
         $sql = "DELETE FROM categoria WHERE id = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $id);

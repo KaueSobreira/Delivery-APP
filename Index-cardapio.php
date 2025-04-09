@@ -1,14 +1,12 @@
 <?php 
     include('php/conexao/conection.php');
 
-    // Buscar configurações da empresa
     $sqlConfig = "SELECT * FROM configuracoes_empresa LIMIT 1";
     $resultConfig = $conn->query($sqlConfig);
     
     if ($resultConfig && $resultConfig->num_rows > 0) {
         $config = $resultConfig->fetch_assoc();
     } else {
-        // Valores padrão caso não exista configurações
         $config = [
             'nome_empresa' => 'SPACE BURGER',
             'sobre_empresa' => 'A melhor hamburgueria da cidade!',
@@ -16,17 +14,14 @@
         ];
     }
     
-    // Obter dia da semana atual (0 para domingo, 6 para sábado)
     $diaSemanaAtual = date('w');
     
-    // Buscar informações do horário de hoje
     $sqlHorarioHoje = "SELECT * FROM horarios_funcionamento WHERE dia_semana = $diaSemanaAtual LIMIT 1";
     $resultHorarioHoje = $conn->query($sqlHorarioHoje);
     
     if ($resultHorarioHoje && $resultHorarioHoje->num_rows > 0) {
         $horarioHoje = $resultHorarioHoje->fetch_assoc();
     } else {
-        // Valores padrão
         $horarioHoje = [
             'horario_inicio' => '10:00:00',
             'horario_fim' => '22:00:00',
@@ -34,10 +29,8 @@
         ];
     }
     
-    // Verificar se o estabelecimento está aberto hoje
     $aberto = $horarioHoje['aberto'] == 1;
     
-    // Buscar todos os horários para a página "Sobre"
     $sqlHorarios = "SELECT * FROM horarios_funcionamento ORDER BY dia_semana";
     $resultHorarios = $conn->query($sqlHorarios);
     $horarios = [];
@@ -48,7 +41,6 @@
         }
     }
     
-    // Array com os nomes dos dias da semana
     $diasSemana = [
         0 => 'Domingo',
         1 => 'Segunda-feira',
@@ -369,7 +361,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Menu mobile toggle
             const btnMobile = document.querySelector('.btnMobile');
             const navItems = document.querySelector('.items');
             
@@ -379,7 +370,6 @@
                 });
             }
             
-            // Fechar menu ao clicar em um link
             const navLinks = document.querySelectorAll('.items a');
             navLinks.forEach(link => {
                 link.addEventListener('click', function() {
@@ -387,12 +377,9 @@
                 });
             });
             
-            // Adicionar ícones através do Iconify (se disponível)
             if (window.Iconify) {
                 Iconify.scan();
             }
-            
-            // Rolagem suave para as âncoras
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();

@@ -1,7 +1,6 @@
 <?php
 include '../php/conexao/conection.php';
 
-// Verifica se o ID foi fornecido
 if (!isset($_GET['id'])) {
     header('Location: categoria.php');
     exit();

@@ -1,17 +1,14 @@
 <?php
 include('../php/conexao/conection.php');
 
-// Verificar se a tabela configuracoes_empresa existe
 $checkTable = "SHOW TABLES LIKE 'configuracoes_empresa'";
 $tableExists = $conn->query($checkTable);
 
-// Se a tabela não existir, redirecionar para o script de criação das tabelas
 if ($tableExists->num_rows == 0) {
     header('Location: ../php/criar_tabela_empresa.php');
     exit();
 }
 
-// Dias da semana para exibição
 $diasSemana = [
     0 => 'Domingo',
     1 => 'Segunda-feira',
@@ -22,33 +19,28 @@ $diasSemana = [
     6 => 'Sábado'
 ];
 
-// Processar o formulário quando enviado
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome_empresa = $conn->real_escape_string($_POST['nome_empresa']);
     $sobre_empresa = $conn->real_escape_string($_POST['sobre_empresa']);
     $titulo_banner = $conn->real_escape_string($_POST['titulo_banner']);
     
-    // Verificar se já existem registros
     $checkRecords = "SELECT COUNT(*) as total FROM configuracoes_empresa";
     $resultCheck = $conn->query($checkRecords);
     $rowCount = $resultCheck->fetch_assoc()['total'];
     
     if ($rowCount > 0) {
-        // Atualizar o registro existente
         $sql = "UPDATE configuracoes_empresa SET 
                 nome_empresa = '$nome_empresa',
                 sobre_empresa = '$sobre_empresa',
                 titulo_banner = '$titulo_banner'
                 WHERE id = 1";
     } else {
-        // Inserir novo registro
         $sql = "INSERT INTO configuracoes_empresa (nome_empresa, sobre_empresa, titulo_banner) 
                 VALUES ('$nome_empresa', '$sobre_empresa', '$titulo_banner')";
     }
     
     $operacaoSucesso = $conn->query($sql);
     
-    // Processar horários de funcionamento
     $horariosSucesso = true;
     
     for ($dia = 0; $dia <= 6; $dia++) {
@@ -56,12 +48,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $horario_inicio = $conn->real_escape_string($_POST["horario_inicio_$dia"]);
         $horario_fim = $conn->real_escape_string($_POST["horario_fim_$dia"]);
         
-        // Verificar se já existe um registro para este dia
         $checkHorario = "SELECT id FROM horarios_funcionamento WHERE dia_semana = $dia";
         $resultHorario = $conn->query($checkHorario);
         
         if ($resultHorario && $resultHorario->num_rows > 0) {
-            // Atualizar horário existente
             $horarioId = $resultHorario->fetch_assoc()['id'];
             $sqlHorario = "UPDATE horarios_funcionamento SET 
                           horario_inicio = '$horario_inicio',
@@ -69,7 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                           aberto = $aberto
                           WHERE id = $horarioId";
         } else {
-            // Inserir novo horário
             $sqlHorario = "INSERT INTO horarios_funcionamento (dia_semana, horario_inicio, horario_fim, aberto, empresa_id) 
                           VALUES ($dia, '$horario_inicio', '$horario_fim', $aberto, 1)";
         }
@@ -88,12 +77,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Buscar dados do banco
 $sql = "SELECT * FROM configuracoes_empresa LIMIT 1";
 $result = $conn->query($sql);
 $config = $result->fetch_assoc();
 
-// Buscar horários de funcionamento
 $sqlHorarios = "SELECT * FROM horarios_funcionamento ORDER BY dia_semana";
 $resultHorarios = $conn->query($sqlHorarios);
 $horarios = [];
@@ -283,7 +270,6 @@ $conn->close();
     <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Controle do toggle de status (aberto/fechado) para cada dia
             const toggles = document.querySelectorAll('.toggle-status');
             
             toggles.forEach(toggle => {
@@ -302,7 +288,6 @@ $conn->close();
                 });
             });
             
-            // Menu mobile
             const btnMobile = document.querySelector('.btnMobile');
             const navItems = document.querySelector('.items');
             
