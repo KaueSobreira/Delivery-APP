@@ -62,6 +62,13 @@
                                 </select>
                             </div>
 
+                            <div class="mb-4">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="emPromocao" name="emPromocao" value="1">
+                                    <label class="form-check-label" for="emPromocao">Produto em promoção</label>
+                                </div>
+                            </div>
+
                             <div class="d-grid gap-2">
                                 <button type="submit" class="btn btn-primary btn-lg">Cadastrar Produto</button>
                             </div>

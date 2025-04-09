@@ -7,6 +7,21 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="../styles/styles.css">
+    <style>
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1050;
+            min-width: 300px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            animation: slideIn 0.3s forwards;
+        }
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+    </style>
 </head>
 <body>
     <div class="container-fluid py-4">
@@ -27,6 +42,7 @@
                                 <th>Preço</th>
                                 <th>Descrição</th>
                                 <th>Categoria</th>
+                                <th>Promoção</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -34,7 +50,7 @@
                             <?php
                                 include '../php/conexao/conection.php';
 
-                                $sql = "SELECT p.id, p.nome_produto, p.preco, p.descricao, c.nome_categoria 
+                                $sql = "SELECT p.id, p.nome_produto, p.preco, p.descricao, c.nome_categoria, p.em_promocao 
                                         FROM produtos p
                                         JOIN categoria c ON p.categoria_id = c.id";
 
@@ -48,19 +64,32 @@
                                         echo "<td>" . htmlspecialchars($linha['descricao']) . "</td>";
                                         echo "<td>" . htmlspecialchars($linha['nome_categoria']) . "</td>";
                                         echo "<td>";
+                                        $promocao_status = $linha['em_promocao'] ? 'ativo' : 'inativo';
+                                        $promocao_cor = $linha['em_promocao'] ? 'success' : 'secondary';
+                                        echo "<button class='btn btn-sm btn-" . $promocao_cor . " alternar-promocao' 
+                                                data-id='" . $linha['id'] . "' 
+                                                data-status='" . $promocao_status . "'>
+                                                <i class='fas fa-tag'></i> " . ($linha['em_promocao'] ? 'Ativo' : 'Inativo') . "
+                                              </button>";
+                                        echo "</td>";
+                                        echo "<td>";
                                         echo "<a href='editar_produto.php?id=" . $linha['id'] . "' class='btn btn-sm btn-info me-1'><i class='fas fa-edit'></i></a>";
                                         echo "<button class='btn btn-sm btn-danger' onclick='confirmarExclusao(" . $linha['id'] . ")'><i class='fas fa-trash'></i></button>";
                                         echo "</td>";
                                         echo "</tr>";
                                     }
                                 } else {
-                                    echo "<tr><td colspan='5' class='text-center'>Nenhum produto encontrado.</td></tr>";
+                                    echo "<tr><td colspan='6' class='text-center'>Nenhum produto encontrado.</td></tr>";
                                 }
 
                                 mysqli_close($conn);
                             ?>
                         </tbody>
                     </table>
+                    <br>
+                    <a href="../Index-painel.php" class="btn btn-primary">
+                        <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Voltar
+                    </a>
                 </div>
             </div>
         </div>
@@ -114,6 +143,43 @@
                 }
                 showNotification(errorMessage, 'danger');
             }
+
+            $('.alternar-promocao').on('click', function() {
+                const id = $(this).data('id');
+                const currentStatus = $(this).data('status');
+                const newStatus = currentStatus === 'ativo' ? 0 : 1;
+                const button = $(this);
+                
+                $.ajax({
+                    url: '../php/produtos/alternar_promocao.php',
+                    type: 'POST',
+                    data: { id: id, status: newStatus },
+                    success: function(response) {
+                        try {
+                            const result = JSON.parse(response);
+                            if (result.success) {
+                                if (newStatus) {
+                                    button.removeClass('btn-secondary').addClass('btn-success');
+                                    button.html('<i class="fas fa-tag"></i> Ativo');
+                                    button.data('status', 'ativo');
+                                } else {
+                                    button.removeClass('btn-success').addClass('btn-secondary');
+                                    button.html('<i class="fas fa-tag"></i> Inativo');
+                                    button.data('status', 'inativo');
+                                }
+                                showNotification('Status de promoção atualizado!', 'success');
+                            } else {
+                                showNotification('Erro ao atualizar status: ' + result.message, 'danger');
+                            }
+                        } catch (e) {
+                            showNotification('Erro ao processar resposta', 'danger');
+                        }
+                    },
+                    error: function() {
+                        showNotification('Erro na comunicação com o servidor', 'danger');
+                    }
+                });
+            });
         });
 
         function showNotification(message, type) {

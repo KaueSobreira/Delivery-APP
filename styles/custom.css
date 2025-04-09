@@ -1,0 +1,36 @@
+/* Ajustes para a imagem de hamburger */
+
+/* Solução temporária para exibição do banner sem imagem */
+.bannerContent img {
+    position: relative;
+    z-index: 2;
+    display: block;
+}
+
+/* Criar uma pseudo-imagem de hambúrguer quando não houver imagem */
+.bannerContent .burger-placeholder {
+    width: 40%;
+    height: 350px;
+    background-color: #FF9800;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.bannerContent .burger-placeholder::before {
+    content: '🍔';
+    font-size: 150px;
+}
+
+@media (max-width: 992px) {
+    .bannerContent .burger-placeholder {
+        width: 80%;
+        height: 300px;
+        margin: 0 auto;
+    }
+} 

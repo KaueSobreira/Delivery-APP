@@ -6,6 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $descricao = $_POST['descProd'];
     $preco = $_POST['preco'];
     $categoria_id = $_POST['categoria'];
+    $emPromocao = isset($_POST['emPromocao']) ? 1 : 0;
 
     $target_dir = "../images/";
     $file_extension = strtolower(pathinfo($_FILES["imagem"]["name"], PATHINFO_EXTENSION));
@@ -17,9 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (move_uploaded_file($_FILES["imagem"]["tmp_name"], $target_file)) {
             $caminho_imagem = "images/" . $new_filename;
             
-            $sql = "INSERT INTO produtos (nome_produto, descricao, preco, categoria_id, caminho_imagem) VALUES (?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO produtos (nome_produto, descricao, preco, categoria_id, caminho_imagem, em_promocao) VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ssdis", $nomeProduto, $descricao, $preco, $categoria_id, $caminho_imagem);
+            $stmt->bind_param("ssdisi", $nomeProduto, $descricao, $preco, $categoria_id, $caminho_imagem, $emPromocao);
             
             if ($stmt->execute()) {
                 header("Location: ../pages/produtos.php?success=1");

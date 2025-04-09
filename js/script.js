@@ -96,4 +96,45 @@ document.addEventListener('DOMContentLoaded', function() {
             link.classList.add('active');
         }
     });
+
+    // Menu mobile toggle
+    const btnMobile = document.querySelector('.btnMobile');
+    const navItems = document.querySelector('.items');
+    
+    if (btnMobile) {
+        btnMobile.addEventListener('click', function() {
+            navItems.classList.toggle('active');
+        });
+    }
+    
+    // Fechar menu ao clicar em um link
+    const navLinksMobile = document.querySelectorAll('.items a');
+    navLinksMobile.forEach(link => {
+        link.addEventListener('click', function() {
+            navItems.classList.remove('active');
+        });
+    });
+    
+    // Adicionar ícones através do Iconify (se disponível)
+    if (window.Iconify) {
+        Iconify.scan();
+    }
+    
+    // Rolagem suave para as âncoras
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
 });

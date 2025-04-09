@@ -77,6 +77,13 @@ $categorias = $conn->query($sqlCategorias);
                             </div>
 
                             <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="emPromocao" name="em_promocao" value="1" <?php echo $produto['em_promocao'] ? 'checked' : ''; ?>>
+                                    <label class="form-check-label" for="emPromocao">Produto em promoção</label>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
                                 <label for="imagem" class="form-label">Nova Imagem (opcional)</label>
                                 <input type="file" class="form-control" id="imagem" name="imagem" accept="image/*">
                                 <?php if ($produto['caminho_imagem']): ?>

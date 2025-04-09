@@ -7,13 +7,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $preco = $_POST['preco'];
     $descricao = $_POST['descricao'];
     $categoria_id = $_POST['categoria_id'];
+    $em_promocao = isset($_POST['em_promocao']) ? 1 : 0;
     
     $conn->begin_transaction();
     
     try {
-        $sql = "UPDATE produtos SET nome_produto = ?, preco = ?, descricao = ?, categoria_id = ? WHERE id = ?";
+        $sql = "UPDATE produtos SET nome_produto = ?, preco = ?, descricao = ?, categoria_id = ?, em_promocao = ? WHERE id = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sdsii", $nome, $preco, $descricao, $categoria_id, $id);
+        $stmt->bind_param("sdsiii", $nome, $preco, $descricao, $categoria_id, $em_promocao, $id);
         $stmt->execute();
 
         if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] === 0) {

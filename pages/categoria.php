@@ -53,6 +53,10 @@
                             ?>
                         </tbody>
                     </table>
+                    <br>
+                    <a href="../Index-painel.php" class="btn btn-primary">
+                        <i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Voltar
+                    </a>
                 </div>
             </div>
         </div>
