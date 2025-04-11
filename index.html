@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUA HAMBURGUERIA - Cardápio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+</head>
+<body class="bg-light">
+    <div class="navbar">
+        <div class="content">
+            <a href="#" id="logo">Sua hamburgueria</a>
+            <div class="items">
+                <a href="#about">Sobre</a>
+                <a href="#cardapio">Cardápio</a>
+                <a href="#promotions">Promoções</a>
+                <a href="#service">Atendimento</a>
+                <a href="#" class="cart-icon">
+                    <span class="iconify-inline" data-icon="mdi:cart-variant"></span>
+                </a>
+                <a href="#" class="whatsapp-icon">
+                    <span class="iconify-inline" data-icon="akar-icons:whatsapp-fill"></span>
+                </a>
+            </div>
+            <div class="btnMobile">
+                <span class="iconify-inline" data-icon="mdi:menu"></span>
+            </div>
+        </div>
+    </div>
+    <div class="banner">
+        <div class="bannerContent">
+            <div>
+                <h1>SABORES QUE SÃO<br><span>DE OUTRO MUNDO</span></h1>
+                <p id="subtitle">A melhor hamburgueria da galáxia agora ao seu alcance!</p>
+                <a href="#cardapio" class="btn">Cardápio</a>
+                <div class="social">
+                    <a href="#">
+                        <span class="iconify" data-icon="akar-icons:facebook-fill"></span>
+                    </a>
+                    <a href="#">
+                        <span class="iconify" data-icon="akar-icons:instagram-fill"></span>
+                    </a>
+                    <a href="#">
+                        <span class="iconify" data-icon="akar-icons:twitter-fill"></span>
+                    </a>
+                </div>
+            </div>
+            <img src="images/burger.png" alt="Imagem de um lanche">
+        </div>
+    </div>  
+    
+    <div class="alert alert-success text-center py-3 mb-0" id="service">
+        <h4><i class="fas fa-clock"></i> ESTABELECIMENTO ABERTO HOJE (Quarta-feira)</h4>
+        <p class="mb-0">Horário de funcionamento: 11:00 às 23:00</p>
+    </div>
+    
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card shadow-sm">
+                    <div class="card-body p-4">
+                        <h2 class="text-center mb-4">Sobre Nós</h2>
+                        <p class="lead">Com ingredientes selecionados e receitas exclusivas, a BURGER GALAXY traz o melhor sabor dos hambúrgueres artesanais até você. Nossa missão é proporcionar uma experiência gastronômica de outro planeta!</p>
+                        
+                        <h4 class="text-center mt-4 mb-3">Horários de Funcionamento</h4>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Dia</th>
+                                        <th>Horário</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Domingo</td>
+                                        <td>12:00 às 22:00</td>
+                                        <td><span class="badge bg-success">Aberto</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Segunda-feira</td>
+                                        <td>Fechado</td>
+                                        <td><span class="badge bg-danger">Fechado</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Terça-feira</td>
+                                        <td>11:00 às 23:00</td>
+                                        <td><span class="badge bg-success">Aberto</span></td>
+                                    </tr>
+                                    <tr class="table-active">
+                                        <td>Quarta-feira</td>
+                                        <td>11:00 às 23:00</td>
+                                        <td><span class="badge bg-success">Aberto</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Quinta-feira</td>
+                                        <td>11:00 às 23:00</td>
+                                        <td><span class="badge bg-success">Aberto</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sexta-feira</td>
+                                        <td>11:00 às 00:00</td>
+                                        <td><span class="badge bg-success">Aberto</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sábado</td>
+                                        <td>11:00 às 00:00</td>
+                                        <td><span class="badge bg-success">Aberto</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="text-center mt-3">
+                            <div class="d-inline-block border rounded p-3 bg-light">
+                                <h5>Hoje (Quarta-feira)</h5>
+                                <p class="mb-1">
+                                    <span class="badge bg-success p-2 mb-2">ABERTO AGORA</span><br>
+                                    11:00 às 23:00
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container py-5">
+        <h1 class="text-center mb-5" id="cardapio">Cardápio</h1>
+        
+        <div class="row justify-content-center">
+            <!-- Categoria: Hambúrgueres -->
+            <div class='categoria-wrapper'>
+                <div class='categoria-card' data-bs-toggle='collapse' data-bs-target='#produtos-1'>
+                    <div class='card-body text-center'>
+                        <h3 class='card-title'>Hambúrgueres</h3>
+                    </div>
+                </div>
+                
+                <div class='collapse' id='produtos-1'>
+                    <div class='row mt-3'>
+                        <div class='col-md-6 mb-3'>
+                            <div class='card produto-card'>
+                                <div class='card-img-top bg-light d-flex align-items-center justify-content-center' style='height: 200px;'>
+                                    <i class='fas fa-hamburger text-muted' style='font-size: 3rem;'></i>
+                                </div>
+                                <div class='card-body'>
+                                    <h5 class='card-title'>Galaxy Burger</h5>
+                                    <p class='card-text'>Pão brioche, 180g de blend de carne, queijo cheddar, bacon, alface, tomate e molho especial da casa.</p>
+                                    <p class='card-text text-end preco'>R$ 32,90</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class='col-md-6 mb-3'>
+                            <div class='card produto-card'>
+                                <div class='card-img-top bg-light d-flex align-items-center justify-content-center' style='height: 200px;'>
+                                    <i class='fas fa-hamburger text-muted' style='font-size: 3rem;'></i>
+                                </div>
+                                <div class='card-body'>
+                                    <h5 class='card-title'>Black Hole</h5>
+                                    <p class='card-text'>Pão preto, 180g de blend de carne, queijo gorgonzola, cebola caramelizada e geleia de bacon.</p>
+                                    <p class='card-text text-end preco'>R$ 36,90</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class='col-md-6 mb-3'>
+                            <div class='card produto-card'>
+                                <div class='card-img-top bg-light d-flex align-items-center justify-content-center' style='height: 200px;'>
+                                    <i class='fas fa-hamburger text-muted' style='font-size: 3rem;'></i>
+                                </div>
+                                <div class='card-body'>
+                                    <h5 class='card-title'>Meteor Smash</h5>
+                                    <p class='card-text'>Dois pães brioche, 2x 120g de blend de carne, queijo cheddar duplo, bacon crocante e molho barbecue.</p>
+                                    <p class='card-text text-end preco'>R$ 39,90</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class='col-md-6 mb-3'>
+                            <div class='card produto-card'>
+                                <div class='card-img-top bg-light d-flex align-items-center justify-content-center' style='height: 200px;'>
+                                    <i class='fas fa-hamburger text-muted' style='font-size: 3rem;'></i>
+                                </div>
+                                <div class='card-body'>
+                                    <h5 class='card-title'>Veggie Star</h5>
+                                    <p class='card-text'>Pão vegano, 160g de hambúrguer vegetal, queijo vegano, alface, tomate, picles e molho especial.</p>
+                                    <p class='card-text text-end preco'>R$ 34,90</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Categoria: Porções -->
+            <div class='categoria-wrapper'>
+                <div class='categoria-card' data-bs-toggle='collapse' data-bs-target='#produtos-2'>
+                    <div class='card-body text-center'>
+                        <h3 class='card-title'>Porções</h3>
+                    </div>
+                </div>
+                
+                <div class='collapse' id='produtos-2'>
+                    <div class='row mt-3'>
+                        <div class='col-md-6 mb-3'>
+                            <div class='card produto-card'>
+                                <div class='card-img-top bg-light d-flex align-items-center justify-content-center' style='height: 200px;'>
+                                    <i class='fas fa-utensils text-muted' style='font-size: 3rem;'></i>
+                                </div>
+                                <div class='card-body'>
+                                    <h5 class='card-title'>Batata Frita Cosmic</h5>
+                                    <p class='card-text'>Porção de batatas fritas crocantes com molho especial à parte.</p>
+                                    <p class='card-text text-end preco'>R$ 24,90</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class='col-md-6 mb-3'>
+                            <div class='card produto-card'>
+                                <div class='card-img-top bg-light d-flex align-items-center justify-content-center' style='height: 200px;'>
+                                    <i class='fas fa-utensils text-muted' style='font-size: 3rem;'></i>
+                                </div>
+                                <div class='card-body'>
+                                    <h5 class='card-title'>Onion Rings</h5>
+                                    <p class='card-text'>Anéis de cebola empanados e fritos, acompanha molho barbecue.</p>
+                                    <p class='card-text text-end preco'>R$ 26,90</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Categoria: Bebidas -->
+            <div class='categoria-wrapper'>
+                <div class='categoria-card' data-bs-toggle='collapse' data-bs-target='#produtos-3'>
+                    <div class='card-body text-center'>
+                        <h3 class='card-title'>Bebidas</h3>
+                    </div>
+                </div>
+                
+                <div class='collapse' id='produtos-3'>
+                    <div class='row mt-3'>
+                        <div class='col-md-6 mb-3'>
+                            <div class='card produto-card'>
+                                <div class='card-img-top bg-light d-flex align-items-center justify-content-center' style='height: 200px;'>
+                                    <i class='fas fa-glass-cheers text-muted' style='font-size: 3rem;'></i>
+                                </div>
+                                <div class='card-body'>
+                                    <h5 class='card-title'>Milkshake Orbital</h5>
+                                    <p class='card-text'>Milkshake de chocolate, caramelo ou baunilha. 400ml.</p>
+                                    <p class='card-text text-end preco'>R$ 18,90</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class='col-md-6 mb-3'>
+                            <div class='card produto-card'>
+                                <div class='card-img-top bg-light d-flex align-items-center justify-content-center' style='height: 200px;'>
+                                    <i class='fas fa-wine-bottle text-muted' style='font-size: 3rem;'></i>
+                                </div>
+                                <div class='card-body'>
+                                    <h5 class='card-title'>Refrigerante</h5>
+                                    <p class='card-text'>Coca-Cola, Guaraná ou Sprite. Lata 350ml.</p>
+                                    <p class='card-text text-end preco'>R$ 6,90</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class='col-md-6 mb-3'>
+                            <div class='card produto-card'>
+                                <div class='card-img-top bg-light d-flex align-items-center justify-content-center' style='height: 200px;'>
+                                    <i class='fas fa-beer text-muted' style='font-size: 3rem;'></i>
+                                </div>
+                                <div class='card-body'>
+                                    <h5 class='card-title'>Cerveja Artesanal</h5>
+                                    <p class='card-text'>IPA, Pilsen ou Stout. Garrafa 355ml.</p>
+                                    <p class='card-text text-end preco'>R$ 14,90</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container py-5" id="promotions">
+        <h1 class="text-center mb-5">Promoções</h1>
+        
+        <div class="row">
+            <div class='col-md-4 mb-4'>
+                <div class='card produto-card promocao-card'>
+                    <div class='card-img-top bg-light d-flex align-items-center justify-content-center' style='height: 200px;'>
+                        <i class='fas fa-hamburger text-muted' style='font-size: 3rem;'></i>
+                    </div>
+                    <div class='card-body'>
+                        <div class='promocao-badge'>PROMOÇÃO</div>
+                        <h5 class='card-title'>Combo Family</h5>
+                        <p class='card-text categoria-tag'>Hambúrgueres</p>
+                        <p class='card-text'>2 Galaxy Burgers + 2 refrigerantes + 1 porção de batata grande.</p>
+                        <p class='card-text text-end preco'>R$ 79,90</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='col-md-4 mb-4'>
+                <div class='card produto-card promocao-card'>
+                    <div class='card-img-top bg-light d-flex align-items-center justify-content-center' style='height: 200px;'>
+                        <i class='fas fa-hamburger text-muted' style='font-size: 3rem;'></i>
+                    </div>
+                    <div class='card-body'>
+                        <div class='promocao-badge'>PROMOÇÃO</div>
+                        <h5 class='card-title'>Terça do Black Hole</h5>
+                        <p class='card-text categoria-tag'>Hambúrgueres</p>
+                        <p class='card-text'>Toda terça, nosso Black Hole com 20% de desconto!</p>
+                        <p class='card-text text-end preco'>R$ 29,90</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='col-md-4 mb-4'>
+                <div class='card produto-card promocao-card'>
+                    <div class='card-img-top bg-light d-flex align-items-center justify-content-center' style='height: 200px;'>
+                        <i class='fas fa-beer text-muted' style='font-size: 3rem;'></i>
+                    </div>
+                    <div class='card-body'>
+                        <div class='promocao-badge'>PROMOÇÃO</div>
+                        <h5 class='card-title'>Happy Hour Cósmico</h5>
+                        <p class='card-text categoria-tag'>Bebidas</p>
+                        <p class='card-text'>Compre 2 cervejas artesanais e ganhe 1! De segunda a quinta, das 17h às 19h.</p>
+                        <p class='card-text text-end preco'>R$ 29,80</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-5" id="about">
+            ESSE PROJETO FOI FEITO PARA TREINAR HABILIDADES EM PHP E JS <BR></BR>
+            A VERSÃO QUE ESTÁ AQUI NO GIT HUB PAGES É APENAS DEMONSTRAÇÃO <BR></BR>
+            A VERSÃO "OFICIAL" É CONFIGURAVEL TODA A PARTE DO NOME DA HAMBURGUERIA, PRODUTOS, HORARIOS, ETC. <BR></BR>  
+            PORÉM COMO É TUDO CONECTADO A UM BANCO DE DADOS, NÃO SERÁ POSSIVEL EXPORTE-LO PARA O GIT HUB PAGES <BR></BR>    
+            OBS:: ESSE PROJETO NÃO ESTÁ PRONTO POR QUE NÃO TEM A PARTE DO CARRINHO DE COMPRAS E DO WHATSAPP E OBVIAMENTE A PARTE DO BANCO DE DADOS <BR></BR>
+
+            OBRIGADO PELA ATENÇÃO <BR></BR>
+            KAUE
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const btnMobile = document.querySelector('.btnMobile');
+            const navItems = document.querySelector('.items');
+            
+            if (btnMobile) {
+                btnMobile.addEventListener('click', function() {
+                    navItems.classList.toggle('active');
+                });
+            }
+            
+            const navLinks = document.querySelectorAll('.items a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navItems.classList.remove('active');
+                });
+            });
+            
+            if (window.Iconify) {
+                Iconify.scan();
+            }
+            
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</body>
+</html> 
